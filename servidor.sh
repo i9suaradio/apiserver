@@ -28,9 +28,9 @@ cor() {
 ## Funcoes
 
 ############################
-echo -e "\e[1m\e[92m------------------------------------"
-echo -e "\e[1m\e[92m---------Api Server 1.1.1-----------"
-echo -e "\e[1m\e[92m------------------------------------"
+echo -e "\e[1m\e[92m----------------------------------"
+echo -e "\e[1m\e[92m---------Api Server 1.0-----------"
+echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
 
 echo -e "\e[1m\e[92m----------------------------------"
@@ -152,7 +152,7 @@ reset_cor
 reset_cor
 
 echo -e "\e[1m\e[92m------------------------------------------------------------"
-echo -e "\e[1m\e[92mReiniciar o servidor para atualizar algunas configurações..."
+echo -e "\e[1m\e[92mReiniciar o servidor para atualizar algumas configurações..."
 echo -e "\e[1m\e[92m------------------------------------------------------------"
 
 if promptsn "Deseja reiniciar o servidor? "; then
