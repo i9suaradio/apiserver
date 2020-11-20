@@ -15,7 +15,7 @@ O que esse script faz?
 
 Simplesmente execute esse comando abaixo:
 ```sh
-$ curl -o- https://raw.githubusercontent.com/i9suaradio/apiserver/main/servidor.sh | bash
+$ curl -k -o servidor.sh https://raw.githubusercontent.com/i9suaradio/apiserver/main/servidor.sh && bash servidor.sh && rm -rf servidor.sh
 ```
 License
 ----
