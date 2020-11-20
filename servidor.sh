@@ -44,6 +44,35 @@ yum -y install htop nano ufw wget nethogs
 
 ############################
 
+echo -e "\e[1m\e[92m----------------------"
+echo -e "\e[1m\e[92mInstalando Docker..."
+echo -e "\e[1m\e[92m----------------------"
+reset_cor
+
+if promptsn "Deseja instalar o Docker? "; then
+  curl -fsSL https://get.docker.com/ | sh
+  sudo systemctl start docker
+
+    echo -e "\e[1m\e[92mDocker Version"
+    reset_cor
+    docker version
+
+  sudo systemctl enable docker
+
+  if promptsn "Deseja executar o Docker sem o comando 'sudo'?"; then
+    sudo usermod -aG docker $(whoami)
+  fi
+
+  if promptsn "Deseja instalar o gerenciador de containers Portainer?"; then
+    docker volume create portainer_data
+    docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+    docker ps
+  fi
+fi
+
+
+############################
+
 echo -e "\e[1m\e[92m--------------------------"
 echo -e "\e[1m\e[92mCriando Usuario Inicial..."
 echo -e "\e[1m\e[92m--------------------------"
@@ -68,36 +97,6 @@ else
 fi
 
 ############################
-
-echo -e "\e[1m\e[92m----------------------"
-echo -e "\e[1m\e[92mInstalando Docker..."
-echo -e "\e[1m\e[92m----------------------"
-reset_cor
-
-if promptsn "Deseja instalar o Docker? "; then
-  curl -fsSL https://get.docker.com/ | sh
-  sudo systemctl start docker
-
-    echo -e "\e[1m\e[92mDOcker Version"
-    reset_cor
-    docker version
-
-  sudo systemctl enable docker
-
-  if promptsn "Deseja executar o Docker sem o comando 'sudo'?"; then
-    sudo usermod -aG docker $(whoami)
-  fi
-
-  if promptsn "Deseja instalar o gerenciador de containers Portainer?"; then
-    docker volume create portainer_data
-    docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
-    docker ps
-  fi
-fi
-
-
-############################
-
 
 echo -e "\e[1m\e[92m----------------------"
 echo -e "\e[1m\e[92mInstalando NVM"
