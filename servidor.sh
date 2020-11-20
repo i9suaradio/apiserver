@@ -1,28 +1,28 @@
 #!/bin/bash +x
 
 ## Funcoes
-promptsn () {
-    while true; do
-        read -p "$1 " sn
-        case $sn in
-            [YySs]* ) return 0;;
-            [Nn]* ) return 1;;
-            * ) echo -e "\e[0mResponda apenas com (S)SIM ou (N)Não";;
-        esac
-    done
+promptsn() {
+  while true; do
+    read -p "$1 " sn
+    case $sn in
+    [YySs]*) return 0 ;;
+    [Nn]*) return 1 ;;
+    *) echo -e "\e[0mResponda apenas com (S)SIM ou (N)Não" ;;
+    esac
+  done
 }
 
-reset_cor (){
+reset_cor() {
   echo -e "\e[0m"
 }
 
-cor (){
+cor() {
   case $1 in
-   "red") echo -e "\e[1m\e[31m";;
-   "green") echo -e "\e[1m\e[32m";;
-   "blue") echo -e "\e[1m\e[96m";;
-   "yellow") echo -e "\e[1m\e[33m";;
-  *) echo -e "\e[0m";;
+  "red") echo -e "\e[1m\e[31m" ;;
+  "green") echo -e "\e[1m\e[32m" ;;
+  "blue") echo -e "\e[1m\e[96m" ;;
+  "yellow") echo -e "\e[1m\e[33m" ;;
+  *) echo -e "\e[0m" ;;
   esac
 }
 ## Funcoes
@@ -51,19 +51,18 @@ reset_cor
 if promptsn "Deseja criar um novo usuário"; then
   echo -e "\e[1m\e[92mDigite o nome do usuario... \e[0m"
   read novousuario
-  if id $novousuario > /dev/null 2>&1
-  then
+  if id $novousuario >/dev/null 2>&1; then
     echo -e "\e[1m\e[31mO usuario $novousuario já existe..."
   else
     echo -e "\e[1m\e[92mCriando o usuario: $novousuario..."
-    `adduser $novousuario`
+    $(adduser $novousuario)
 
     echo -e "\e[1m\e[92mDefinindo a senha do usuario: $novousuario..."
-    `passwd $novousuario`
+    $(passwd $novousuario)
   fi
 else
-    echo "Ok, próxima tarefa..."
-    reset_cor
+  echo "Ok, próxima tarefa..."
+  reset_cor
 fi
 
 ############################
@@ -77,9 +76,9 @@ if promptsn "Deseja instalar o Docker? "; then
   curl -fsSL https://get.docker.com/ | sh
   sudo systemctl start docker
 
-    echo -e "\e[1m\e[92mDocker Version"
-    reset_cor
-    docker version
+  echo -e "\e[1m\e[92mDocker Version"
+  reset_cor
+  docker version
 
   sudo systemctl enable docker
 
@@ -94,9 +93,7 @@ if promptsn "Deseja instalar o Docker? "; then
   fi
 fi
 
-
 ############################
-
 
 echo -e "\e[1m\e[92m----------------------"
 echo -e "\e[1m\e[92mInstalando NVM"
@@ -144,13 +141,23 @@ if promptsn "Deseja instalar o NVM - Node Version Manager? "; then
     fi
   fi
 
-   
 fi
 
 echo -e "\e[1m\e[92m-------------------------------"
 echo -e "\e[1m\e[92mScript executado com sucesso..."
 echo -e "\e[1m\e[92m-------------------------------"
 reset_cor
+
+#Reset da cor
+reset_cor
+
+echo -e "\e[1m\e[92m------------------------------------------------------------"
+echo -e "\e[1m\e[92mReiniciar o servidor para atualizar algunas configurações..."
+echo -e "\e[1m\e[92m------------------------------------------------------------"
+
+if promptsn "Deseja reiniciar o servidor? "; then
+  reboot
+fi
 
 #Reset da cor
 reset_cor
