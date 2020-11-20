@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ## Funcoes
 promptsn () {
@@ -37,7 +37,7 @@ echo -e "\e[1m\e[92m----------------------------------"
 echo -e "\e[1m\e[92mAtualização inicial do sistema ..."
 echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
-sudo yum update && sudo yum upgrade
+sudo yum y update && sudo yum y upgrade
 yum autoremove
 yum -y install htop nano ufw wget nethogs
 
