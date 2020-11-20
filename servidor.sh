@@ -29,7 +29,7 @@ cor (){
 
 ############################
 echo -e "\e[1m\e[92m----------------------------------"
-echo -e "\e[1m\e[92m---------Api Server 1.X-----------"
+echo -e "\e[1m\e[92m---------Api Server 1.2-----------"
 echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
 
@@ -37,7 +37,7 @@ echo -e "\e[1m\e[92m----------------------------------"
 echo -e "\e[1m\e[92mAtualização inicial do sistema ..."
 echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
-sudo yum -y update && sudo yum -y upgrade
+sudo yum -assumeyes update && sudo yum -assumeyes upgrade
 yum --assumeno update
 yum autoremove
 yum -y install htop nano ufw wget nethogs
