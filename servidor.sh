@@ -40,8 +40,33 @@ yum -y install htop nano ufw wget nethogs
 
 ############################
 
+echo -e "\e[1m\e[92m--------------------------"
+echo -e "\e[1m\e[92mCriando Usuario Inicial..."
+echo -e "\e[1m\e[92m--------------------------"
+reset_cor
+
+if promptsn "Deseja criar um novo usuário"; then
+  echo -e "\e[1m\e[92mDigite o nome do usuario... \e[0m"
+  read novousuario
+  if id $novousuario > /dev/null 2>&1
+  then
+    echo -e "\e[1m\e[31mO usuario $novousuario já existe..."
+  else
+    echo -e "\e[1m\e[92mCriando o usuario: $novousuario..."
+    `adduser $novousuario`
+
+    echo -e "\e[1m\e[92mDefinindo a senha do usuario: $novousuario..."
+    `passwd $novousuario`
+  fi
+else
+    echo "Ok, próxima tarefa..."
+    reset_cor
+fi
+
+############################
+
 echo -e "\e[1m\e[92m----------------------"
-echo -e "\e[1m\e[92mInstalando docker..."
+echo -e "\e[1m\e[92mInstalando Docker..."
 echo -e "\e[1m\e[92m----------------------"
 reset_cor
 
@@ -69,30 +94,6 @@ fi
 
 ############################
 
-echo -e "\e[1m\e[92m----------------------"
-echo -e "\e[1m\e[92mCriando Usuario Inicial..."
-echo -e "\e[1m\e[92m----------------------"
-reset_cor
-
-if promptsn "Deseja criar um novo usuário"; then
-  echo -e "\e[1m\e[92mDigite o nome do usuario... \e[0m"
-  read novousuario
-  if id $novousuario > /dev/null 2>&1
-  then
-    echo -e "\e[1m\e[31mO usuario $novousuario já existe..."
-  else
-    echo -e "\e[1m\e[92mCriando o usuario: $novousuario..."
-    `adduser $novousuario`
-
-    echo -e "\e[1m\e[92mDefinindo a senha do usuario: $novousuario..."
-    `passwd $novousuario`
-  fi
-else
-    echo "Ok, próxima tarefa..."
-    reset_cor
-fi
-
-############################
 
 echo -e "\e[1m\e[92m----------------------"
 echo -e "\e[1m\e[92mInstalando NVM"
