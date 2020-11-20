@@ -33,8 +33,8 @@ echo -e "\e[1m\e[92m---------------------------------"
 echo -e "\e[1m\e[92mAtualização inicial do sistema..."
 echo -e "\e[1m\e[92m---------------------------------"
 reset_cor
-yum update
-yum upgrade
+yum -y update
+yum -y upgrade
 yum -y check-update
 yum -y install htop nano ufw wget nethogs
 
