@@ -28,14 +28,18 @@ cor (){
 ## Funcoes
 
 ############################
-
-echo -e "\e[1m\e[92m---------------------------------"
-echo -e "\e[1m\e[92mAtualização inicial do sistema..."
-echo -e "\e[1m\e[92m---------------------------------"
+echo -e "\e[1m\e[92m----------------------------------"
+echo -e "\e[1m\e[92m---------Api Server 1.0-----------"
+echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
-yum -y update
-yum -y upgrade
-yum -y check-update
+
+echo -e "\e[1m\e[92m----------------------------------"
+echo -e "\e[1m\e[92mAtualização inicial do sistema ..."
+echo -e "\e[1m\e[92m----------------------------------"
+reset_cor
+yum --assumeyes update
+yum --assumeyes upgrade
+yum --assumeyes check-update
 yum -y install htop nano ufw wget nethogs
 
 ############################
