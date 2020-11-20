@@ -37,7 +37,7 @@ echo -e "\e[1m\e[92m----------------------------------"
 echo -e "\e[1m\e[92mAtualização inicial do sistema ..."
 echo -e "\e[1m\e[92m----------------------------------"
 reset_cor
-sudo yum y update && sudo yum y upgrade
+sudo yum -y update && sudo yum -y upgrade
 yum autoremove
 yum -y install htop nano ufw wget nethogs
 
