@@ -106,8 +106,10 @@ if promptsn "Deseja instalar o Docker? "; then
     sudo usermod -aG docker $(whoami)
   fi
 
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
+  if promptsn "Deseja instalar o docker-compose??"; then
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+  fi
 
   if promptsn "Deseja instalar o gerenciador de containers Portainer?"; then
     docker volume create portainer_data
