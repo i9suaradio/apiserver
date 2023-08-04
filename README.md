@@ -4,7 +4,7 @@ Simples assim :).
 
 O que esse script faz?
 - Atualiza o sistema
-- Cria um usuario inicial para não usar ficar usando o usuário root
+- Cria um usuario adicional para não usar o usuário root
 - Instala o Docker
 - Instala o Portainer (Gerenciador web de Containers)
 - Instala o NVM
