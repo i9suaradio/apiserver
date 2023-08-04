@@ -2,6 +2,8 @@
 Execute esse script e terá um servidor Docker pronto para a criação de containers e desenvolvimento.
 Simples assim :).
 
+Compatível com CENTOS 7 e 8
+
 O que esse script faz?
 - Atualiza o sistema
 - Cria um usuario adicional para não usar o usuário root
